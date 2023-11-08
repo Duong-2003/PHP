@@ -42,6 +42,9 @@
           <li class="nav-item">
             <a class="nav-link" href="admin_orders.php">ORDERS</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin_register.php">REGISTER ADMIN</a>
+          </li>
          
         </ul>
         

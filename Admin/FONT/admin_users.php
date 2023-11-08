@@ -10,14 +10,13 @@ $dbUser = "root";
 $dbPass = "";
 $dbName = "tbl_shop_vpp";
 
-$connect = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
+$connect = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
 
-if($connect){
-    $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
-    // echo"kết nối thành công";
-}
-else{
-    die("Kết nối thất bại" . mysqli_connect_error());
+if ($connect) {
+  $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
+  // echo"kết nối thành công";
+} else {
+  die("Kết nối thất bại" . mysqli_connect_error());
 }
 
 // include("connect.php");
@@ -30,56 +29,98 @@ $result = $connect->query($query);
 
 
 <div class="container ">
-      <div class="row" style="margin: 100px 0px;">
-        <h3> Quản lý thành viên</h3>
-        
-        <table class="table table-success">
-        <button class="btn btn-primary">Thêm thành viên</button>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>USERNAME</th>
-              <th>EMAIL</th>
-              <th>PASSWORD</th>
-              <th>ADDRESS</th>
-              <th>ROLE</th>
-              <th>CREATED_AT</th>
-              <th>UPDATED_AT</th>
-              <th>Chức năng</td>
+  <div class="" style="margin:100px 0px">
 
-            </tr>
-          </thead>
-          <tbody>
+    <h1>Danh sách thành viên và admin</h1>
 
-
-          
-            <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<th scope='row'>" . $row['id'] . "</th>";
-                        echo "<td>" . $row['username'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . md5($row['password']) . "</td>";
-                        echo "<td>" . $row['address'] . "</td>";
-                        echo "<td>" . $row['role'] . "</td>";
-                        echo "<td>" . $row['created_at'] . "</td>";
-                        echo "<td>" . $row['updated_at'] . "</td>";
-                        echo "<td><a href='chinh-sua-thanh-vien.php?id=" . $row['id'] . "'>Sửa</a> <a href='xoa-thanh-vien.php?id=" . $row['id'] . "'>Xóa</a></td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='9'>Không có thành viên nào.</td></tr>";
-                }
-                ?>
-
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
     <?php
+
+    // // 2. Chuẩn bị câu truy vấn $sql
+    // $sql = "select * from `tbl_shop_vpp`";
+
+
+
+    // 4. Khi thực thi các truy vấn dạng SELECT, dữ liệu lấy về cần phải phân tách để sử dụng
+    // Thông thường, chúng ta sẽ sử dụng vòng lặp while để duyệt danh sách các dòng dữ liệu được SELECT
+    // Ta sẽ tạo 1 mảng array để chứa các dữ liệu được trả về
+    $data = [];
+    $rowNum = 1;
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+      $data[] = array(
+        'rowNum' => $rowNum, // sử dụng biến tự tăng để làm dữ liệu cột STT
+        'id' => $row['id'],
+        'username' => $row['username'],
+        'email' => $row['email'],
+        'password' => $row['password'],
+        'address' => $row['address'],
+        'role' => $row['role'],
+        'created_at' => $row['created_at'],
+        'updated_at' => $row['updated_at'],
+      );
+      $rowNum++;
+    }
+    ?>
+
+    <!-- Button Thêm mới -->
+    <?php
+      include("../LOGIC/admin_add_user.php");
+      ?>
+    
+
+
+    <table class="table table-bordered  table-success">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>USERNAME</th>
+          <th>EMAIL</th>
+          <th>PASSWORD</th>
+          <th>ADDRESS</th>
+          <th>ROLE</th>
+          <th>CREATED_AT</th>
+          <th>UPDATED_AT</th>
+          <th>Chức năng</td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($data as $row) : ?>
+          <tr>
+
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo  $row['username']; ?></td>
+            <td><?php echo  $row['email']; ?></td>
+            <td><?php echo md5($row['password']); ?></td>
+            <td><?php echo $row['address']; ?></td>
+            <td><?php echo $row['role']; ?></td>
+            <td><?php echo $row['created_at']; ?></td>
+            <td><?php echo $row['updated_at']; ?></td>
+            <td>
+              <!-- Button Sửa -->
+              
+                
+                <?php
+                
+                include("../LOGIC/admin_edit_user.php");
+                ?>
+                
+             
+
+              <!-- Button Xóa -->
+              <a href="" id="btnDelete" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+
+</html>
+<?php
 // Đóng kết nối
 $connect->close();
 
