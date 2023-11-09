@@ -34,7 +34,7 @@ if (isset($_POST['btnSave'])) {
 
   mysqli_close($connect);
 
-  header('location: admin_users.php');
+  // header('location: admin_users.php');
 }
 ?>
 

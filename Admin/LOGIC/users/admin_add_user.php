@@ -14,6 +14,12 @@ if ($connect) {
   die("Kết nối thất bại" . mysqli_connect_error());
 }
 
+
+
+
+
+
+
 if (isset($_POST['btnSave'])) {
   $username = $_POST['username'];
   $email = $_POST['email'];
@@ -27,8 +33,9 @@ if (isset($_POST['btnSave'])) {
   mysqli_query($connect, $sqlInsert);
 
   mysqli_close($connect);
-
-  // header('location: admin_users.php');
+if(mysqli_query($connect,$sqlInsert)){
+  header('location: admin_users.php');
+}
 }
 ?>
 
