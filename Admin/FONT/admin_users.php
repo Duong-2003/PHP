@@ -1,4 +1,7 @@
+
+
 <?php
+
 include("admin_web.php");
 
 ?>
@@ -21,8 +24,9 @@ if ($connect) {
 
 // include("connect.php");
 // Truy vấn dữ liệu thành viên
-$query = "SELECT * FROM users";
-$result = $connect->query($query);
+$list_sql = "SELECT * FROM users";
+$result = mysqli_query($connect, $list_sql);
+
 ?>
 
 
@@ -63,7 +67,7 @@ $result = $connect->query($query);
 
     <!-- Button Thêm mới -->
     <?php
-      include("../LOGIC/admin_add_user.php");
+      include("../LOGIC/users/admin_add_user.php");
       ?>
     
 
@@ -97,16 +101,23 @@ $result = $connect->query($query);
             <td>
               <!-- Button Sửa -->
               
-                
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary my-1"  id="btnUpdate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <a href="admin_edit_user.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit"></i></a>
+                 Sửa thành viên
+                  </button> -->
+                  <a href="?id=<?php echo $row['id']; ?>" id="btnUpdate" class="btn btn-primary">
+                <i class="fas fa-edit"></i>
+              </a>
                 <?php
                 
-                include("../LOGIC/admin_edit_user.php");
+                // include("../LOGIC/users/admin_edit_user.php");
                 ?>
                 
              
 
               <!-- Button Xóa -->
-              <a href="" id="btnDelete" class="btn btn-danger">
+              <a onclick="return confirm('Bạn có muốn xóa thành viên này không')" href="admin_delete_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-danger">
                 <i class="fas fa-trash-alt"></i>
               </a>
             </td>

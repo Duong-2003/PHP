@@ -139,7 +139,7 @@
 
                     <p class="m-0"><strong>Certification:</strong>  Vietnam </p>
                     <p class="m-0"> <strong>Address:</strong>: Vietnam</p>
-                    <p class="m-0"> <strong>Phone:</strong> 123456 </p>
+                    <p class="m-0"> <strong>Phone:</strong> 123456789 </p>
                     <p class="m-0"> <strong>Email:</strong> 12345@gmail.com </p>
 
 

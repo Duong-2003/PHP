@@ -15,8 +15,8 @@
     
 
 <?php 
-session_start();
-ob_start();
+// session_start();
+// ob_start();
 include("../Source/head.php");
 include("../Source/head_menu.php");
 include("../Source/slide.php");
