@@ -82,9 +82,7 @@
 
 
 
-        <div class="" style="text-align:center">
-            <img src="../Public/img/icon_after_title.webp" alt="">
-        </div>
+        
 
        
 

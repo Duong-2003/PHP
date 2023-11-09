@@ -172,8 +172,10 @@ include("../Source/head_menu.php");
       </div>
       <span class="span">Forgot password?</span>
     </div>
+
+
     <button class="button-submit">Sign In</button>
-    <p class="p">Don't have an account? <span class="span">Sign Up</span>
+    <p class="p">Don't have an account? <span class="span"><a href="register_web.php">Sign Up</a></span>
 
     </p><p class="p line">Or With</p>
 

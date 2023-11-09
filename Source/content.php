@@ -8,12 +8,6 @@
     <div class="row">
         <div class="col" id="col-content">
 
-<img src="../Public/img/sp11.webp" alt="">
-
-<img src="../Public/img/sp11.webp" alt="">
-
-<img src="../Public/img/sp11.webp" alt="">
-<img src="../Public/img/sp11.webp" alt="">
 
        
         </div>

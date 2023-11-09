@@ -1,8 +1,8 @@
  <!-- Button trigger modal -->
  <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
  
- <a href="php?adduser="id"><i class="fas fa-plus"></i></a>
- Thêm thành viên
+<i class="fas fa-plus"></i>
+Thêm thành viên
       </button>
 
       <!-- Modal -->
@@ -71,6 +71,8 @@
       </div>
 
       <?php
+      session_start();
+      ob_start();
     $dbHost = "localHost";
     $dbUser = "root";
     $dbPass = "";
