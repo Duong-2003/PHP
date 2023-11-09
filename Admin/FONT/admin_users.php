@@ -66,6 +66,13 @@ $result = mysqli_query($connect, $list_sql);
     ?>
 
     <!-- Button Thêm mới -->
+
+    <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <a href="../LOGIC/users/admin_add_user.php?id=<?php echo $row['id']; ?>">
+  <i style="color: aliceblue;" class="fas fa-plus"></i>
+</a>
+  Thêm thành viên
+</button>
     <?php
       include("../LOGIC/users/admin_add_user.php");
       ?>
@@ -100,19 +107,14 @@ $result = mysqli_query($connect, $list_sql);
             <td><?php echo $row['updated_at']; ?></td>
             <td>
               <!-- Button Sửa -->
-              
-                <!-- Button trigger modal -->
-                <!-- <button type="button" class="btn btn-primary my-1"  id="btnUpdate" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    <a href="admin_edit_user.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit"></i></a>
-                 Sửa thành viên
-                  </button> -->
-                  <a href="?id=<?php echo $row['id']; ?>" id="btnUpdate" class="btn btn-primary">
+              <a  href="../LOGIC/users/admin_edit_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-primary">
                 <i class="fas fa-edit"></i>
               </a>
-                <?php
+             
+  
+
+                  
                 
-                // include("../LOGIC/users/admin_edit_user.php");
-                ?>
                 
              
 

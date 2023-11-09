@@ -24,4 +24,5 @@ $product_code=$_GET['product_code'];
 $delete_products="DELETE FROM products WHERE product_code=$product_code" ;
 mysqli_query($connect, $delete_products);  
 echo "<h1>Xóa thành công</h1>"
+ 
 ?>

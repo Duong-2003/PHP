@@ -23,5 +23,8 @@ $id=$_GET['id'];
 
 $delete_users="DELETE FROM users WHERE id=$id" ;
 mysqli_query($connect, $delete_users);  
-echo "<h1>Xóa thành công</h1>"
+echo "<h1>Xóa thành công</h1>";
+// header("Location:Admin/FONT/admin_users.php");
 ?>
+
+<!-- value="<?php echo $shop_suppliersRow['id'] ?>" -->
