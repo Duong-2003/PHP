@@ -120,7 +120,7 @@ Thêm sản phẩm
 
 
                             <!-- Button Xóa -->
-                            <a href="" id="btnDelete" class="btn btn-danger">
+                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này không')" href="../LOGIC/products/admin_delete_product.php?product_code=<?php echo $row['product_code']; ?>" id="btnDelete" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>

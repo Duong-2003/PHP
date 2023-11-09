@@ -117,7 +117,7 @@ $result = mysqli_query($connect, $list_sql);
              
 
               <!-- Button Xóa -->
-              <a onclick="return confirm('Bạn có muốn xóa thành viên này không')" href="admin_delete_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-danger">
+              <a onclick="return confirm('Bạn có muốn xóa thành viên này không')" href="../LOGIC/users/admin_delete_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-danger">
                 <i class="fas fa-trash-alt"></i>
               </a>
             </td>
