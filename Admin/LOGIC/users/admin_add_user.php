@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insert_result = mysqli_query($connect, $insert_query);
 
     if ($insert_result) {
-        echo "Thêm người dùng thành công!";
+       echo("Thêm người dùng thành công!");
     } else {
         echo "Lỗi khi thêm người dùng: " . mysqli_error($connect);
     }
@@ -44,6 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!-- Form thêm người dùng -->
+
+
 <form method="POST" action="../LOGIC/users/admin_add_user.php">
     <div class="form-group">
         <label for="username">Tên người dùng</label>

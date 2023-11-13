@@ -71,9 +71,10 @@ $result = mysqli_query($connect, $list_sql);
   <a href="../LOGIC/users/admin_add_user.php?id= <?php echo $row['id']; ?>">
   <i style="color: aliceblue;" class="fas fa-plus"></i>
 </a> -->
-<!-- <a href="../LOGIC/users/admin_add_user.php?id= <?php echo $row['id']; ?>" id="btnPlus" class="btn btn-primary">
-                <i class="fas fa-plus"></i>
-              </a> -->
+<!-- <a href="..users/admin_add_user.php?id=<?php echo $row['id']; ?>" id="btnPlus" class="btn btn-primary">
+  <i class="fas fa-plus"></i>
+  
+</a> -->
 
     <?php
       include("../LOGIC/users/admin_add_user.php");
