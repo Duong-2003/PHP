@@ -17,7 +17,7 @@ else{
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy dữ liệu từ form
-    // Lấy giá trị từ form
+   
     $product_code = $_POST['product_code'];
     $category_name = $_POST['category_name'];
     $product_name = $_POST['product_name'];
@@ -31,9 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insert_query = "INSERT INTO products (product_code, category_name, product_name, product_price, product_description, product_description_details, product_image, product_quantity) 
                     VALUES ($product_code, $category_name,$product_name, $product_price, $product_description, $product_description_details, $product_image, $product_quantity)";
     $insert_statement = mysqli_prepare($connect, $insert_query);
+
     
-    mysqli_stmt_bind_param($insert_statement, "sssssssi", $product_code, $category_name, $product_name, $product_price, $product_description, $product_description_details, $product_image, $product_quantity);
-    $insert_result = mysqli_stmt_execute($insert_statement);
     
     if ($insert_result) {
         echo "Thêm sản phẩm thành công!";

@@ -134,7 +134,7 @@ include("../Source/head_menu.php");
   <div class="container">
     <div class="row">
       <div class="col" id="col-register">
-        <form class="form">
+        <form class="form" action="register_web.php">
           <div class="" id="" style="color:#db7b7b;text-align:center;font-size:25px;margin:20px 0">REGISTER FOR AN ACCOUNT</div>
           <div class="flex-column">
             <label>Username </label>
@@ -232,18 +232,49 @@ include("../Source/head_menu.php");
 
 
 
+<?php
 
 
 
+$dbHost = "localhost";
+$dbUser = "root";
+$dbPass = "";
+$dbName = "tbl_shop_vpp";
 
+$connect = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
 
+if ($connect) {
+    $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
+    // echo "Kết nối thành công";
+} else {
+    die("Kết nối thất bại" . mysqli_connect_error());
+}
 
-</body>
+// Lấy thông tin từ form đăng ký
+$name = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$address = $_POST['address'];
 
-</html>
+// Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = $connect->query($sql);
 
+if ($result->num_rows > 0) {
+    echo "Email đã tồn tại. Vui lòng sử dụng email khác.";
+} else {
+    // Thêm thông tin người dùng vào cơ sở dữ liệu
+    $sql = "INSERT INTO users (name, email, password, address) VALUES ('$name', '$email', '$password', '$address')";
 
+    if ($connect->query($sql) === true) {
+        echo "Đăng ký thành công!";
+    } else {
+        echo "Đăng ký thất bại: " . $connect->error;
+    }
+}
 
+$connect->close();
+?>
 
 <?php
 

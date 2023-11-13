@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 08:33 AM
+-- Generation Time: Nov 13, 2023 at 12:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,7 +45,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_code`, `category_name`, `product_name`, `product_price`, `product_description`, `product_description_details`, `product_image`, `product_quantity`, `created_at`, `updated_at`) VALUES
-(0, 'Vở', 'Vở Campus', '10.00', 'vở ', 'vởproduct_name', '21321', 1, '2023-11-09 13:38:09', '2023-11-09 13:38:09');
+(0, 'daasds', 'sdsd', '20000', 'dsadas', 'dwdadwda', '', 1, '2023-11-13 08:54:11', '2023-11-13 08:54:11');
 
 -- --------------------------------------------------------
 
@@ -69,11 +69,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `address`, `role`, `created_at`, `updated_at`) VALUES
-(13, 'Dươnggg', 'admin@gmail.com', '73c4605a64a69969b9ac861bc2e03d79', '1234567891011', 'admin', '2023-11-09 13:18:34', '2023-11-09 10:50:11');
+(21, 'Dươnggg', 'Admin1@gmail.com', '1234', '12233', 'user', '2023-11-13 03:22:56', '2023-11-13 03:22:56'),
+(22, 'Dươnggg', 'admin3@gmail.com', '1234', '1234', 'user', '2023-11-13 03:24:14', '2023-11-13 03:24:14'),
+(23, 'Dươngggg', 'Admin2000@gmail.com', '1234', '1234', 'user', '2023-11-13 03:25:21', '2023-11-13 03:25:21'),
+(24, 'Dươngggg', 'admin1@gmail.com', '1234', '12345', 'user', '2023-11-13 03:27:37', '2023-11-13 03:27:37'),
+(27, 'Dươnggg', 'anhtustyle31200331@gmail.com', '1234', 'adwdw', 'user', '2023-11-13 03:59:16', '2023-11-13 03:59:16'),
+(28, 'Dươnggg', 'anhtustyle31200331333@gmail.com', '1234', 'adwdw', 'user', '2023-11-13 03:59:51', '2023-11-13 03:59:51'),
+(29, 'Dươnggg', 'Admin2000@gmail.com', '1234', '1234', 'admin', '2023-11-13 04:08:38', '2023-11-13 04:08:38');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_code`);
 
 --
 -- Indexes for table `users`
@@ -89,7 +101,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
