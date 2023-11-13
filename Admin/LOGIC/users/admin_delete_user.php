@@ -20,7 +20,7 @@
 <?php 
 $id=$_GET['id'];
 // echo $id;
-
+$sql="SELECT * FROM users";
 $delete_users="DELETE FROM users WHERE id=$id" ;
 mysqli_query($connect, $delete_users);  
 echo "<h1>Xóa thành công</h1>";

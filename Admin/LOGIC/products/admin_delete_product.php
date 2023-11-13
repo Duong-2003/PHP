@@ -21,8 +21,9 @@
 $product_code=$_GET['product_code'];
 // echo $id;
 
-$delete_products="DELETE FROM products WHERE product_code=$product_code" ;
-mysqli_query($connect, $delete_products);  
-echo "<h1>Xóa thành công</h1>"
- 
+$delete_product="DELETE FROM products WHERE product_code=$product_code" ;
+mysqli_query($connect, $delete_product);  
+echo "<h1>Xóa thành công</h1>";
+// header("Location:Admin/FONT/admin_users.php");
 ?>
+

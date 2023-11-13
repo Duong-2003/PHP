@@ -67,16 +67,14 @@ $result = mysqli_query($connect, $list_sql);
 
     <!-- Button Thêm mới -->
 
-    <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <!-- <button type="button" class="btn btn-primary my-1"id="btnAdd" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   <a href="../LOGIC/users/admin_add_user.php?id= <?php echo $row['id']; ?>">
   <i style="color: aliceblue;" class="fas fa-plus"></i>
-</a>
-<!-- <a  href="../LOGIC/users/admin_add_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-primary">
+</a> -->
+<!-- <a href="../LOGIC/users/admin_add_user.php?id= <?php echo $row['id']; ?>" id="btnPlus" class="btn btn-primary">
                 <i class="fas fa-plus"></i>
-                Thêm thành viên
               </a> -->
 
-</button>
     <?php
       include("../LOGIC/users/admin_add_user.php");
       ?>
@@ -111,7 +109,7 @@ $result = mysqli_query($connect, $list_sql);
             <td><?php echo $row['updated_at']; ?></td>
             <td>
               <!-- Button Sửa -->
-              <a  href="../LOGIC/users/admin_edit_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-primary">
+              <a  href="../LOGIC/users/admin_edit_user.php?id=<?php echo $row['id']; ?>" id="btnEdit" class="btn btn-primary">
                 <i class="fas fa-edit"></i>
               </a>
              
@@ -120,7 +118,6 @@ $result = mysqli_query($connect, $list_sql);
                   
                 
                 
-             
 
               <!-- Button Xóa -->
               <a onclick="return confirm('Bạn có muốn xóa thành viên này không')" href="../LOGIC/users/admin_delete_user.php?id=<?php echo $row['id']; ?>" id="btnDelete" class="btn btn-danger">

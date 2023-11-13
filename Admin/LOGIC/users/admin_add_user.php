@@ -1,89 +1,72 @@
-
-
 <?php
+
 $dbHost = "localHost";
 $dbUser = "root";
 $dbPass = "";
 $dbName = "tbl_shop_vpp";
 
-$connect = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
+$connect = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
 
-if ($connect) {
-  $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
-} else {
-  die("Kết nối thất bại" . mysqli_connect_error());
+if($connect){
+    $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
+    // echo"kết nối thành công";
+}
+else{
+    die("Kết nối thất bại" . mysqli_connect_error());
 }
 
 
 
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Lấy dữ liệu từ form
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $address = $_POST["address"];
+    $role = $_POST["role"];
+    $created_at = date("Y-m-d H:i:s");
+    $updated_at = date("Y-m-d H:i:s");
 
+    // Thực hiện câu truy vấn INSERT INTO
+    $insert_query = "INSERT INTO users (username, email, password, address, role, created_at, updated_at) VALUES ('$username', '$email', '$password', '$address', '$role', '$created_at', '$updated_at')";
+    $insert_result = mysqli_query($connect, $insert_query);
 
-
-if (isset($_POST['btnSave'])) {
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $address = $_POST['address'];
-  $role = $_POST['role'];
-
-  $sqlInsert = "INSERT INTO users (username, email, password, address, role) 
-                VALUES ('$username', '$email', '$password', '$address', '$role')";
-  
-  mysqli_query($connect, $sqlInsert);
-
-  mysqli_close($connect);
-if(mysqli_query($connect,$sqlInsert)){
-  header('location: admin_users.php');
-}
+    if ($insert_result) {
+        echo "Thêm người dùng thành công!";
+    } else {
+        echo "Lỗi khi thêm người dùng: " . mysqli_error($connect);
+    }
+    
 }
 ?>
 
-<!-- Button Thêm mới -->
-<!-- <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  <i class="fas fa-plus"></i>
-  Thêm thành viên
-</button> -->
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm thành viên</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="admin_add_user.php" method="POST">
-          <div class="">
-            <h4>USERNAME</h4>
-            <input type="text" name="username" required>
-          </div>
-          <div class="">
-            <h4>EMAIL</h4>
-            <input type="email" name="email" required>
-          </div>
-          <div class="">
-            <h4>PASSWORD</h4>
-            <input type="password" name="password" required>
-          </div>
-          <div class="">
-            <h4>ADDRESS</h4>
-            <input type="text" name="address">
-          </div>
-          <div class="">
-            <h4>ROLE</h4>
-            <select name='role'>
-              <option value="admin">Admin</option>
-              <option value="user">User</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" name="btnSave" class="btn btn-primary" value="Add new user">Add</button>
-          </div>
-        </form>
-      </div>
+
+<!-- Form thêm người dùng -->
+<form method="POST" action="../LOGIC/users/admin_add_user.php">
+    <div class="form-group">
+        <label for="username">Tên người dùng</label>
+        <input type="text" class="form-control" id="username" name="username" required>
     </div>
-  </div>
-</div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text" class="form-control" id="address" name="address" required>
+    </div>
+    <div class="form-group">
+        <label for="role">Vai trò</label>
+        <select class="form-control" id="role" name="role" required>
+            <option value="user">Người dùng</option>
+            <option value="admin">Quản trị viên</option>
+        </select>
+    </div>
+    <input type="submit" value="Thêm thành viên" class="btn btn-primary">
+</form>

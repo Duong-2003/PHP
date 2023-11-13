@@ -69,6 +69,11 @@ $result = $connect->query($query);
         ?>
 
         <!-- Button Thêm mới -->
+<!-- 
+         <a href="../LOGIC/products/admin_add_product.php?<?php echo $row['product_code']; ?>"><button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="fas fa-plus"></i>
+  Thêm sản phẩm
+</button> </a> -->
         <?php
         include("../LOGIC/products/admin_add_product.php");
         ?>
@@ -101,7 +106,7 @@ $result = $connect->query($query);
                         <td><?php echo $row['product_price']; ?></td>
                         <td><?php echo $row['product_description']; ?></td>
                         <td><?php echo $row['product_description_details']; ?></td>
-                        <td><?php echo $row['product_image']; ?></td>
+                        <td><img src="img/<?php echo $row['product_image']; ?>"></td>
                         <td><?php echo $row['product_quantity']; ?></td>
                         <td><?php echo $row['created_at']; ?></td>
                         <td><?php echo $row['updated_at']; ?></td>
@@ -109,10 +114,12 @@ $result = $connect->query($query);
                             <!-- Button Sửa -->
                             <!-- <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 
-<i class="fas fa-plus"></i>
-Thêm sản phẩm
-</button> -->
-                            
+                            <i class="fas fa-plus"></i>
+                                Thêm sản phẩm
+                    </button> -->
+                    <a  href="../LOGIC/products/admin_edit_product.php?product_code=<?php echo $row['product_code']; ?>" id="btnDelete" class="btn btn-primary">
+                <i class="fas fa-edit"></i>
+              </a>
                             <?php
                             include("../LOGIC/products/admin_edit_product.php");
                             ?>
