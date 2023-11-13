@@ -23,7 +23,7 @@ $product_code=$_GET['product_code'];
 
 $delete_product="DELETE FROM products WHERE product_code=$product_code" ;
 mysqli_query($connect, $delete_product);  
-echo "<h1>Xóa thành công</h1>";
-// header("Location:Admin/FONT/admin_users.php");
+// echo "<h1>Xóa thành công</h1>";
+// header("Location:admin_users.php");
 ?>
 

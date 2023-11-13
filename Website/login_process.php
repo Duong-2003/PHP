@@ -38,17 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
             } else {
                 $error = 'Mật khẩu không đúng';
-                header("Location: login_web.php.php.php?error=$error");
+                header("Location: login_web.php?error=$error");
                 exit;
             }
         } else {
             $error = 'Email không tồn tại';
-            header("Location: login_web.php.php.php?error=$error");
+            header("Location: login_web.php?error=$error");
             exit;
         }
     } else {
         $error = 'Vui lòng nhập đầy đủ thông tin';
-        header("Location: login_web.php.php.php?error=$error");
+        header("Location: login_web.php?error=$error");
         exit;
     }
 
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($connect);
 } else {
     // Nếu không có dữ liệu gửi từ form, chuyển hướng về trang đăng nhập
-    header("Location: login_web.php.php.php");
+    header("Location: login_web.php");
     exit;
 }
 ?>

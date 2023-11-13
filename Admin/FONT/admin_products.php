@@ -121,7 +121,7 @@ $result = $connect->query($query);
                 <i class="fas fa-edit"></i>
               </a>
                             <?php
-                            include("../LOGIC/products/admin_edit_product.php");
+                            // include("../LOGIC/products/admin_edit_product.php");
                             ?>
 
 

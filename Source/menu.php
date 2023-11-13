@@ -45,34 +45,34 @@
                 <div class="col-1"></div>
 
                 <div class="col-2" id="vpp">
-                   <a href=""> <img src="../Public/img/cate_1.webp" alt=""></a>
-                   <div class="py-3"><a href=""><strong>STUDENT STATIONERY</strong></a></div>
+                   <a href="../Source/menu_add/menu_student.php"> <img src="../Public/img/cate_1.webp" alt="">
+                   <div class="py-3"><strong>STUDENT STATIONERY</strong></a></div>
                 </div>
 
 
 
 
                 <div class="col-2" id="vpp">
-                    <a href=""><img src="../Public/img/cate_2.webp" alt=""></a>
-                    <div class="py-3"><a href=""><strong> OFFICE STATIONERY</strong></a></div>
+                    <a href="../Source/menu_add/menu_office.php"><img src="../Public/img/cate_2.webp" alt="">
+                    <div class="py-3"><strong> OFFICE STATIONERY</strong></a></div>
                 </div>
 
 
                 <div class="col-2" id="vpp" style="margin-top:6px">
-                    <a href=""><img src="../Public/img/cate_3.webp" alt=""></a>
-                    <div class="py-3"><a href=""><strong> STATIONERY ACCESSORY </strong></a></div>
+                    <a href="../Source/menu_add/menu_accsessory.php"><img src="../Public/img/cate_3.webp" alt="">
+                    <div class="py-3"><strong> STATIONERY ACCESSORY </strong></a></div>
                 </div>
 
 
 
                 <div class="col-2" id="vpp">
-                  <a href="">  <img src="../Public/img/cate_4.webp" alt=""></a>
-                    <div class="py-3"><a href=""><strong>BACKPACK-BOOK BAG</strong></a></div>
+                  <a href="../Source/menu_add/menu_bag.php">  <img src="../Public/img/cate_4.webp" alt="">
+                    <div class="py-3"><strong>BACKPACK-BOOK BAG</strong></a></div>
                 </div>
 
                 <div class="col-2" id="vpp">
-                  <a href="">  <img src="../Public/img/cate_5.webp" alt=""></a>
-                    <div class="py-3"><a href=""><strong>OFFICE EQUIPMENT</strong></a></div>
+                  <a href="../Source/menu_add/menu_equipment.php">  <img src="../Public/img/cate_5.webp" alt="">
+                    <div class="py-3"><strong>OFFICE EQUIPMENT</strong></a></div>
                 </div>
 
                 <div class="col-1"></div>

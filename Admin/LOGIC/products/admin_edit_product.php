@@ -38,9 +38,7 @@ if (isset($_POST['btnSave'])) {
     $product_description_details = $_POST['product_description_details'];
     $product_image = $_FILES['product_image']['name'];
     $product_quantity = $_POST['product_quantity'];
-    $created_at = $_POST['created_at'];
-    $updated_at = $_POST['updated_at'];
-
+  
     $sql = "UPDATE products SET 
                 product_code='$product_code', 
                 category_name='$category_name', 
@@ -49,9 +47,8 @@ if (isset($_POST['btnSave'])) {
                 product_description='$product_description', 
                 product_description_details='$product_description_details',
                 product_image='$product_image', 
-                product_quantity='$product_quantity', 
-                created_at='$created_at', 
-                updated_at='$updated_at' 
+                product_quantity='$product_quantity'
+              
             WHERE product_code='$product_code'";
 
     // Thực thi truy vấn UPDATE
@@ -124,15 +121,7 @@ if (isset($_POST['btnSave'])) {
             <input type="text" name="product_quantity"value="<?php echo $shop_Row['product_quantity'] ?>">
           </div>
 
-          <div class="">
-            <h4>created_at</h4>
-            <input type="text" name="created_at"value="<?php echo $shop_Row['created_at'] ?>">
-          </div>
-
-          <div class="">
-            <h4>updated_at</h4>
-            <input type="text" name="updated_at"value="<?php echo $shop_Row['updated_at'] ?>">
-          </div>
+        
          
 
 

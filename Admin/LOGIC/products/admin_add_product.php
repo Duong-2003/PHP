@@ -1,24 +1,22 @@
 <?php
 
-$dbHost = "localHost";
+$dbHost = "localhost";
 $dbUser = "root";
 $dbPass = "";
 $dbName = "tbl_shop_vpp";
 
-$connect = mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
+$connect = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
 
-if($connect){
+if ($connect) {
     $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
     // echo "Kết nối thành công";
-}
-else{
+} else {
     die("Kết nối thất bại: " . mysqli_connect_error());
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy dữ liệu từ form
-   
-    $product_code = $_POST['product_code'];
+    // $product_code = $_POST['product_code'];
     $category_name = $_POST['category_name'];
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
@@ -26,33 +24,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_description_details = $_POST['product_description_details'];
     $product_image = $_FILES['product_image']['name'];
     $product_quantity = $_POST['product_quantity'];
-    
+
+    // Đường dẫn lưu trữ ảnh sản phẩm
+    $image_path = "../path/to/save/images/" . $product_image;
+
+    // Di chuyển tệp tải lên vào thư mục đích
+    move_uploaded_file($_FILES['product_image']['tmp_name'], $image_path);
+
     // Thực hiện câu truy vấn INSERT INTO
     $insert_query = "INSERT INTO products (product_code, category_name, product_name, product_price, product_description, product_description_details, product_image, product_quantity) 
-                    VALUES ($product_code, $category_name,$product_name, $product_price, $product_description, $product_description_details, $product_image, $product_quantity)";
-    $insert_statement = mysqli_prepare($connect, $insert_query);
+                    VALUES ('$product_code', '$category_name', '$product_name', '$product_price', '$product_description', '$product_description_details', '$image_path', '$product_quantity')";
+    $insert_result = mysqli_query($connect, $insert_query);
 
-    
-    
     if ($insert_result) {
         echo "Thêm sản phẩm thành công!";
     } else {
         echo "Lỗi khi thêm sản phẩm: " . mysqli_error($connect);
     }
-
-
-
-    
 }
 
 ?>
 
 <!-- Form thêm sản phẩm -->
-<form method="POST" action="../Admin/LOGIC/products/admin_add_product.php">
-    <div class="form-group">
+<form method="POST" action="admin_add_product.php" enctype="multipart/form-data">
+    <!-- <div class="form-group">
         <label for="product_code">Mã sản phẩm</label>
         <input type="text" class="form-control" id="product_code" name="product_code" required>
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="category_name">Tên danh mục</label>
         <input type="text" class="form-control" id="category_name" name="category_name" required>

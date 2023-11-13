@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insert_result = mysqli_query($connect, $insert_query);
 
     if ($insert_result) {
-       echo("Thêm người dùng thành công!");
+       ("Thêm người dùng thành công!");
     } else {
         echo "Lỗi khi thêm người dùng: " . mysqli_error($connect);
     }
