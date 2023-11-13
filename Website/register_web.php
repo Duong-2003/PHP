@@ -21,6 +21,9 @@ include("../Source/head_menu.php");
   <title> Stationery Website Home Page </title>
 </head>
 <style>
+  a{
+    text-decoration: none;
+  }
   .form {
     display: flex;
     flex-direction: column;
@@ -134,8 +137,14 @@ include("../Source/head_menu.php");
   <div class="container">
     <div class="row">
       <div class="col" id="col-register">
-        <form class="form" action="register_web.php">
+        <form class="form" action="../Website/resetpass_web.php">
           <div class="" id="" style="color:#db7b7b;text-align:center;font-size:25px;margin:20px 0">REGISTER FOR AN ACCOUNT</div>
+          
+          <div class="error">
+          <p name="notifi" id="notifi_register" class="text-primary"><?= isset($_GET["notifi"]) ? $_GET["notifi"] : '' ?></p>
+          <p name="error" id="error_register" class="text-danger"><?= isset($_GET["error"]) ? $_GET["error"] : '' ?></p>
+        </div>
+
           <div class="flex-column">
             <label>Username </label>
           </div>
@@ -183,7 +192,7 @@ include("../Source/head_menu.php");
               <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
               <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
             </svg>
-            <input type="password" name="password" class="input" placeholder="Password Confirmation">
+            <input type="password" name="password" id="rePass" class="input" placeholder="Password Confirmation">
             <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
               <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path>
             </svg>
@@ -232,49 +241,7 @@ include("../Source/head_menu.php");
 
 
 
-<?php
 
-
-
-$dbHost = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "tbl_shop_vpp";
-
-$connect = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
-
-if ($connect) {
-    $setLang = mysqli_query($connect, "SET NAMES 'utf8'");
-    // echo "Kết nối thành công";
-} else {
-    die("Kết nối thất bại" . mysqli_connect_error());
-}
-
-// Lấy thông tin từ form đăng ký
-$name = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$address = $_POST['address'];
-
-// Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
-$sql = "SELECT * FROM users WHERE email='$email'";
-$result = $connect->query($sql);
-
-if ($result->num_rows > 0) {
-    echo "Email đã tồn tại. Vui lòng sử dụng email khác.";
-} else {
-    // Thêm thông tin người dùng vào cơ sở dữ liệu
-    $sql = "INSERT INTO users (name, email, password, address) VALUES ('$name', '$email', '$password', '$address')";
-
-    if ($connect->query($sql) === true) {
-        echo "Đăng ký thành công!";
-    } else {
-        echo "Đăng ký thất bại: " . $connect->error;
-    }
-}
-
-$connect->close();
-?>
 
 <?php
 
