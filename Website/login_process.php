@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$connect) {
         die("Kết nối thất bại: " . mysqli_connect_error());
     }
-
+    session_start();
+    ob_start();
     // Đặt bộ mã hóa cho kết nối với cơ sở dữ liệu
     mysqli_set_charset($connect, 'utf8');
 
@@ -33,20 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                // Đăng nhập thành công, chuyển hướng người dùng vào trang web.php
             header("Location: web.php");
+            echo '<i class="fas fa-user"></i>';
                 exit;
             } else {
                 $error = 'Mật khẩu không đúng';
-                header("Location: login_web.php?error=$error");
+                header("Location: login_web.php.php.php?error=$error");
                 exit;
             }
         } else {
             $error = 'Email không tồn tại';
-            header("Location: login_web.php?error=$error");
+            header("Location: login_web.php.php.php?error=$error");
             exit;
         }
     } else {
         $error = 'Vui lòng nhập đầy đủ thông tin';
-        header("Location: login_web.php?error=$error");
+        header("Location: login_web.php.php.php?error=$error");
         exit;
     }
 
@@ -54,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($connect);
 } else {
     // Nếu không có dữ liệu gửi từ form, chuyển hướng về trang đăng nhập
-    header("Location: login_web.php");
+    header("Location: login_web.php.php.php");
     exit;
 }
 ?>
