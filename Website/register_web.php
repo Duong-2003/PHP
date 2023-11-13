@@ -137,7 +137,7 @@ include("../Source/head_menu.php");
   <div class="container">
     <div class="row">
       <div class="col" id="col-register">
-        <form class="form" action="../Website/resetpass_web.php">
+        <form class="form" action="../Website/register_process.php" method="post">
           <div class="" id="" style="color:#db7b7b;text-align:center;font-size:25px;margin:20px 0">REGISTER FOR AN ACCOUNT</div>
           
           <div class="error">
@@ -240,7 +240,19 @@ include("../Source/head_menu.php");
 </html>
 
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Lấy dữ liệu từ form đăng ký
+    $username = $_POST['username'];
+    $email = $_POST['email'];
 
+    // Thực hiện các xử lý lưu thông tin đăng ký vào cơ sở dữ liệu hoặc thực hiện các hành động khác cần thiết
+
+    // Chuyển hướng người dùng đến trang thành công hoặc hiển thị thông báo thành công
+    header('Location: web.php');
+    exit;
+}
+?>
 
 
 <?php
