@@ -24,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Kiểm tra xem dữ liệu đã được nhập đầy đủ hay chưa
     if ($username != '' && $password != '' && $email != '') {
         // Kiểm tra sự trùng lặp dữ liệu
-        $query = "SELECT * FROM users WHERE username = '$username' OR email = '$email'";
+        $query = "SELECT * FROM users WHERE  email = '$email'";
         $result = mysqli_query($connect, $query);
 
         if (mysqli_num_rows($result) > 0) {
-            $error = 'Tên đăng nhập hoặc email đã tồn tại';
+            $error = 'Email đã tồn tại';
             header("Location: register_web.php?error=$error");
             exit;
         }

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = mysqli_fetch_assoc($result);
 
             if (password_verify($password, $user['password'])) {
-                // Đăng nhập thành công, chuyển hướng người dùng vào trang chính
+                
                // Đăng nhập thành công, chuyển hướng người dùng vào trang web.php
             header("Location: web.php");
                 exit;
